@@ -23,6 +23,8 @@ const Formulario = ({crearCita}) => {
 
     const { mascota, propietario, fecha, hora, sintomas } = cita
 
+    
+
     const submitCita = (e) => {
         e.preventDefault();
         // Validar
@@ -84,7 +86,7 @@ const Formulario = ({crearCita}) => {
 
                 <label>Hora</label>
                 <input 
-                    type="time"
+                    type="time" 
                     name="hora"
                     className="u-full-width"
                     onChange={handlerChange}

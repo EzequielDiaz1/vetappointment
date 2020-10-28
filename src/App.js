@@ -1,11 +1,24 @@
-import React, {Fragment, useState} from 'react'
+import React, {Fragment, useState, useEffect} from 'react'
 import Formulario from './components/Formularios'
 import Cita from './components/Cita'
 
+
 function App() {
+  
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+  if(!citasIniciales){
+    citasIniciales = [];
+  }
 
-  const [citas, setCitas] = useState([])
+  const [citas, setCitas] = useState(citasIniciales)
 
+  useEffect(() => {
+        if(citasIniciales){
+          localStorage.setItem('citas', JSON.stringify(citas))
+        }else{
+          localStorage.setItem('citas', JSON.stringify([]));
+        }
+  }, [citas])
 
   //Funcion que toma las citas actuales y agrega la nueva
   const crearCita = cita => {
@@ -21,6 +34,8 @@ function App() {
     setCitas(nuevasCitas)
   }
 
+
+  
   return (
     <Fragment>
       <h1>Administrador de pacientes </h1>
@@ -31,7 +46,7 @@ function App() {
             <Formulario crearCita={crearCita}/>
           </div>    
           <div className="one-half column">
-            <h2>Administra tus citas</h2>
+            {citas.length === 0 ? <h2>Aún no hay citas</h2> : <h2>Administra tus citas</h2>}
             {citas.map(cita => (
               <Cita
                 key={cita.id}
