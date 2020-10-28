@@ -7,7 +7,7 @@ My name is Ezequiel, i'm from Córdoba, Argentina. I'm a full stack web develope
 
 
 - 🚀 Application to save turns of veterinary patients
-- 🚀 The project was done with React, React Forms, Hooks, LocalStorage
+- 🚀 Made with React, ReactForms & Skeleton. Using LocalStorage
 - 🚀 Try it on https://vetappointment.vercel.app
 
 
